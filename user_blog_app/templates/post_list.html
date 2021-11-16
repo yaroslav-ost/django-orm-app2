@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<button onclick="window.location.href='{% url 'post_add' %}';">Add</button>
+{% endif %}
+    {% for post in object_list %}
+    <div style="width: 75%;padding-left: 20px;">
+      <h2><a href="{% url 'post_details' post.slug %}">{{post.title}}</a></h2>
+        {% if request.user.is_authenticated %}
+        <button onclick="window.location.href='{% url 'post_delete' post.slug %}';">Delete</button>
+        {% endif %}
+        <hr>
+    </div>
+    {% endfor %}
+{% endblock %}

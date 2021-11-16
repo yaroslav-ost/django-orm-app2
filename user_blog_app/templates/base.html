@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <div style="float:right;">
+        <h2>
+            {% if request.user.is_authenticated %}
+            {{ request.user.username }}
+            <a href="{% url 'logout' %}">Log out</a>
+            {% else %}
+            <a href="{% url 'login' %}">Sign In</a>
+            <a href="{% url 'register' %}">Sign Up</a>
+            {% endif %}
+        </h2>
+    </div>
+</head>
+<body>
+<div style="float:left;">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
