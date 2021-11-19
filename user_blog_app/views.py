@@ -22,21 +22,25 @@ class UserLogoutView(LogoutView):
 
 class PostList(ListView):
     model = Post
-    template_name = 'post_list.html'
+    template_name = 'all_post_list.html'
     ordering = ['-created_at']
 
 
 class PostDetails(DetailView):
     model = Post
     context_object_name = "post"
-    template_name = 'post_details.html'
+    template_name = 'all_post_details.html'
 
+class UserPostDetails(DetailView):
+    model = Post
+    context_object_name = "post"
+    template_name = 'user_post_details.html'
 
 class CreatePost(CreateView):
     model = Post
     fields = ['title', 'text']
     template_name = 'create_update_post.html'
-    success_url = '../../'
+    success_url = reverse_lazy('user_posts')
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -47,7 +51,7 @@ class UpdatePost(UpdateView):
     model = Post
     fields = ['title', 'text']
     template_name = 'create_update_post.html'
-    success_url = '../../../'
+    success_url = reverse_lazy('user_posts')
 
 
 class DeletePost(DeleteView):
@@ -59,7 +63,7 @@ class DeletePost(DeleteView):
 
 class UserPostList(ListView):
     model = Post
-    template_name = 'post_list.html'
+    template_name = 'user_post_list.html'
     ordering = ['-created_at']
 
     def get_queryset(self):

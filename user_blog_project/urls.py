@@ -20,9 +20,10 @@ from user_blog_app.views import *
 
 urlpatterns = [
     path('', PostList.as_view(), name='homepage'),
+    path('post/<slug>', PostDetails.as_view(),name='post_details'),
     path('app/user-posts', login_required(UserPostList.as_view()),name='user_posts'),
     path('app/user-posts/add', login_required(CreatePost.as_view()),name='post_add'),
-    path('app/user-posts/<slug>', PostDetails.as_view(),name='post_details'),
+    path('app/user-posts/<slug>', login_required(UserPostDetails.as_view()),name='user_post_details'),
     path('app/user-posts/<slug>/update', login_required(UpdatePost.as_view()), name='post_update'),
     path('app/user-posts/<slug>/delete', login_required(DeletePost.as_view()), name='post_delete'),
     path('app/admin', admin.site.urls),
