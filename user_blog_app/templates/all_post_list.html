@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Blog{% endblock %}
+{% block nav-all-posts %}<strong style="color: white;background-color: #666;">Blog</strong>{% endblock %}
 {% block content %}
 {% for post in object_list %}
 <div style="width: 75%;padding-left: 20px;">
     <h2>
     {% if request.user == post.created_by %}
-    <a href="{% url 'user_post_details' post.slug %}">{{post.title}}*</a>
+    <a href="{% url 'user_post_details' post.slug %}">{{post.title}}</a>
     {% else %}
     <a href="{% url 'post_details' post.slug %}">{{post.title}}</a>
     </h2>

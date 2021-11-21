@@ -58,7 +58,7 @@ class DeletePost(DeleteView):
     model = Post
     context_object_name = "post"
     template_name = 'delete_post.html'
-    success_url = '/'
+    success_url = reverse_lazy('user_posts')
 
 
 class UserPostList(ListView):
