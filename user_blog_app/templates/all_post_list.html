@@ -5,10 +5,10 @@
 {% for post in object_list %}
 <div style="width: 75%;padding-left: 20px;">
     <h2>
-    {% if request.user == post.created_by %}
-    <a href="{% url 'user_post_details' post.slug %}">{{post.title}}</a>
-    {% else %}
-    <a href="{% url 'post_details' post.slug %}">{{post.title}}</a>
+        {% if request.user == post.created_by %}
+        <a href="{% url 'user_post_details' post.slug %}">{{post.title}}</a>
+        {% else %}
+        <a href="{% url 'post_details' post.slug %}">{{post.title}}</a>
     </h2>
     {% endif %}
     <hr>

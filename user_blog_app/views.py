@@ -31,10 +31,12 @@ class PostDetails(DetailView):
     context_object_name = "post"
     template_name = 'all_post_details.html'
 
+
 class UserPostDetails(DetailView):
     model = Post
     context_object_name = "post"
     template_name = 'user_post_details.html'
+
 
 class CreatePost(CreateView):
     model = Post
